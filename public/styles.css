@@ -1380,6 +1380,401 @@ mark.hl {
   .cert-item-header {
     flex-direction: column;
   }
+  .ai-search-form {
+    flex-direction: column;
+  }
+  .btn-ai-submit {
+    width: 100%;
+    justify-content: center;
+  }
+  .ai-quick-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* AI SEARCH HERO & SUMMARY CARD */
+.status-pill.ai-pill {
+  background: linear-gradient(135deg, #0284c7, #2563eb);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #fff;
+}
+
+.ai-search-hero {
+  background: linear-gradient(145deg, #002b54 0%, #00437a 60%, #035397 100%);
+  color: #fff;
+  border-radius: var(--radius-lg);
+  padding: 1.35rem 1.4rem;
+  margin-bottom: 0.9rem;
+  box-shadow: 0 8px 24px rgba(0, 43, 84, 0.18);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.ai-badge-inline {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  background: rgba(56, 189, 248, 0.2);
+  color: #7dd3fc;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  margin-bottom: 0.45rem;
+}
+
+.ai-hero-title {
+  font-size: 1.28rem;
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+  color: #ffffff;
+}
+
+.ai-hero-desc {
+  font-size: 0.86rem;
+  color: #cbd5e1;
+  line-height: 1.45;
+  margin-bottom: 0.95rem;
+}
+
+.ai-hero-desc strong {
+  color: #e0f2fe;
+}
+
+.ai-search-form {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 0.85rem;
+}
+
+.ai-search-input-wrap {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+#aiSearchInput {
+  width: 100%;
+  padding: 0.88rem 2.6rem 0.88rem 2.7rem;
+  font-size: 0.98rem;
+  font-weight: 500;
+  border: 2px solid rgba(125, 211, 252, 0.45);
+  border-radius: 10px;
+  background: #ffffff;
+  color: #0f172a;
+  outline: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+#aiSearchInput:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.35);
+}
+
+.btn-ai-submit {
+  background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  padding: 0.85rem 1.35rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+  transition: transform 0.12s, background 0.15s;
+}
+
+.btn-ai-submit:hover {
+  background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
+  transform: translateY(-1px);
+}
+
+.btn-ai-submit:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.ai-quick-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.quick-Prompt-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.quick-label {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #bae6fd;
+  white-space: nowrap;
+}
+
+.quick-chips-scroll {
+  display: flex;
+  gap: 0.4rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+  scrollbar-width: thin;
+}
+
+.q-chip {
+  background: rgba(255, 255, 255, 0.12);
+  color: #f1f5f9;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  padding: 0.32rem 0.72rem;
+  font-size: 0.77rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+
+.q-chip:hover,
+.q-chip.active {
+  background: #38bdf8;
+  color: #002b54;
+  border-color: #38bdf8;
+  font-weight: 700;
+}
+
+.preset-selector-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.preset-select {
+  background: rgba(255, 255, 255, 0.95);
+  color: #002b54;
+  border: 1px solid #7dd3fc;
+  border-radius: 8px;
+  padding: 0.38rem 0.7rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  max-width: 100%;
+}
+
+/* AI PROGRESS BANNER */
+.ai-progress-banner {
+  background: #e0f2fe;
+  border: 2px solid #0284c7;
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1.15rem;
+  margin-bottom: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.spinner {
+  width: 26px;
+  height: 26px;
+  border: 3px solid #bae6fd;
+  border-top-color: #0284c7;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ai-prog-title {
+  font-weight: 800;
+  font-size: 0.92rem;
+  color: #002b54;
+}
+
+.ai-prog-sub {
+  font-size: 0.8rem;
+  color: #0369a1;
+  margin-top: 0.15rem;
+}
+
+/* AI DIRECT RULE SUMMARY CARD */
+.ai-summary-card {
+  background: #ffffff;
+  border: 2px solid #0284c7;
+  border-radius: var(--radius-lg);
+  padding: 1.15rem 1.3rem;
+  margin-bottom: 0.95rem;
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.12);
+}
+
+.ai-sum-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 0.8rem;
+}
+
+.ai-sum-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #e0f2fe;
+  color: #0369a1;
+  font-size: 0.76rem;
+  font-weight: 800;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid #bae6fd;
+}
+
+.ai-sum-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.ai-answer-box {
+  padding: 0.8rem 0.95rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.ai-answer-box.en {
+  background: #f8fafc;
+  border-left: 4px solid #002b54;
+  color: #0f172a;
+}
+
+.ai-answer-box.tr {
+  background: #f0f9ff;
+  border-left: 4px solid #0284c7;
+  color: #0c4a6e;
+}
+
+.ai-formulas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 0.85rem;
+}
+
+.ai-formula-card {
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+}
+
+.ai-formula-card .f-lbl {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #92400e;
+  display: block;
+}
+
+.ai-formula-card .f-val {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #78350f;
+  margin-top: 0.15rem;
+  display: block;
+}
+
+.ai-formula-card .f-ref {
+  font-size: 0.72rem;
+  color: #b45309;
+  font-weight: 600;
+}
+
+/* AI FOLLOW-UP QUESTION BOX */
+.ai-followup-wrap {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.ai-followup-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.ai-followup-input {
+  flex: 1;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #94a3b8;
+  border-radius: 6px;
+  font-size: 0.86rem;
+}
+
+.ai-followup-answer {
+  margin-top: 0.65rem;
+  padding: 0.75rem 0.9rem;
+  background: #eff6ff;
+  border-left: 4px solid #2563eb;
+  border-radius: 6px;
+  font-size: 0.87rem;
+  line-height: 1.55;
+  color: #1e293b;
+  white-space: pre-wrap;
+}
+
+/* MATCHED VERBATIM PDF PAGES PANEL */
+.matched-pdf-panel {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.15rem 1.3rem;
+  margin-top: 1.1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.matched-pdf-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--rina-navy);
+  margin-bottom: 0.9rem;
+}
+
+.modal-page-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.modal-page-select {
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--rina-navy);
+  background: #fff;
 }
 
 /* PRINT STYLES FOR OFFICIAL LEONARDO TEST SHEET */

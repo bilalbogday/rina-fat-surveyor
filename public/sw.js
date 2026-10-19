@@ -1,4 +1,4 @@
-const CACHE_NAME = 'rina-fat-pwa-v1.0.0';
+const CACHE_NAME = 'rina-fat-surveyor-v2';
 const CORE_ASSETS = [
   '/',
   '/index.html',
@@ -10,22 +10,13 @@ const CORE_ASSETS = [
   '/icons/icon-512.png',
   '/icons/apple-touch-icon.png',
   '/data/equipment-fat-db.json',
-  '/data/rina-rules-index.json'
+  '/data/rina-rules-index.json',
+  '/data/rina-rules-2026-sections.json'
 ];
-
-const FULL_PDF_DB = '/data/rina-rules-2026-sections.json';
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(async (cache) => {
-      await cache.addAll(CORE_ASSETS);
-      // Also pre-cache the full 2026 PDF text database in background so offline rule lookup works everywhere
-      try {
-        await cache.add(FULL_PDF_DB);
-      } catch (e) {
-        console.warn('Full PDF DB background cache deferred:', e);
-      }
-    })
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(CORE_ASSETS))
   );
   self.skipWaiting();
 });
@@ -34,11 +25,9 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
       Promise.all(
-        keys.map((key) => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
-          }
-        })
+        keys
+          .filter((key) => key !== CACHE_NAME)
+          .map((key) => caches.delete(key))
       )
     )
   );
@@ -48,37 +37,44 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
 
-  event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        // Stale-while-revalidate for fast offline-first response
-        fetch(event.request)
-          .then((networkResponse) => {
-            if (networkResponse && networkResponse.status === 200) {
-              caches.open(CACHE_NAME).then((cache) => {
-                cache.put(event.request, networkResponse.clone());
-              });
-            }
-          })
-          .catch(() => {});
-        return cachedResponse;
-      }
+  const url = new URL(event.request.url);
+  // Let external API calls (Gemini API) go directly to network
+  if (url.origin !== self.location.origin) return;
 
-      return fetch(event.request)
-        .then((networkResponse) => {
-          if (networkResponse && networkResponse.status === 200) {
-            const clone = networkResponse.clone();
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, clone);
-            });
+  // For HTML, JS, CSS: Network-first with offline cache fallback so updates are always fresh
+  if (
+    url.pathname === '/' ||
+    url.pathname.endsWith('.html') ||
+    url.pathname.endsWith('.js') ||
+    url.pathname.endsWith('.css')
+  ) {
+    event.respondWith(
+      fetch(event.request)
+        .then((networkRes) => {
+          if (networkRes && networkRes.status === 200) {
+            const copy = networkRes.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
           }
-          return networkResponse;
+          return networkRes;
         })
-        .catch(() => {
-          if (event.request.mode === 'navigate') {
-            return caches.match('/index.html');
-          }
-        });
+        .catch(() =>
+          caches.match(event.request).then((cached) => cached || caches.match('/index.html'))
+        )
+    );
+    return;
+  }
+
+  // For static JSON data & icons: Cache-first with background refresh
+  event.respondWith(
+    caches.match(event.request).then((cached) => {
+      if (cached) return cached;
+      return fetch(event.request).then((networkRes) => {
+        if (networkRes && networkRes.status === 200) {
+          const copy = networkRes.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+        }
+        return networkRes;
+      });
     })
   );
 });

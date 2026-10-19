@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#003b73" />
+  <meta name="theme-color" content="#002b54" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="RINA FAT" />
-  <meta name="description" content="RINA Marine Surveyor Fabrika Kabul Testleri (FAT) — Leonardo TEST & RINA Rules 2026 (Part C & D) İngilizce/Türkçe Çevrimdışı Rehber" />
-  <title>RINA Surveyor — Leonardo TEST &amp; 2026 Rules FAT Rehberi</title>
+  <meta name="apple-mobile-web-app-title" content="RINA AI Rules" />
+  <meta name="description" content="RINA Marine Surveyor — Yapay Zeka Destekli RINA Rules 2026 PDF Arama ve Leonardo TEST (EN/TR) Fabrika Kabul Rehberi" />
+  <title>RINA Surveyor AI — 2026 PDF Kural Bulucu &amp; Leonardo TEST</title>
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
   <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
@@ -20,10 +20,9 @@
     <div class="header-inner">
       <div class="brand-group" id="brandHomeBtn" role="button" tabindex="0" title="Ana Ekrana Dön">
         <div class="rina-logo-mark" aria-hidden="true">
-          <svg viewBox="0 0 120 52" width="88" height="38">
+          <svg viewBox="0 0 120 52" width="84" height="36">
             <text x="2" y="37" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="34" fill="#ffffff">R</text>
             <text x="29" y="37" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="34" fill="#ffffff">I</text>
-            <!-- Compass Star -->
             <polygon points="56,2 62,21 56,18 50,21" fill="#38bdf8"/>
             <polygon points="56,48 62,29 56,32 50,29" fill="#38bdf8"/>
             <polygon points="39,25 51,21 48,25 51,29" fill="#7dd3fc"/>
@@ -34,18 +33,21 @@
           </svg>
         </div>
         <div class="brand-titles">
-          <h1>MARINE SURVEYOR FAT</h1>
-          <span class="subtitle">Leonardo TEST &bull; RINA Rules 2026 (EN / TR)</span>
+          <h1>RINA 2026 AI RULE FINDER</h1>
+          <span class="subtitle">Yapay Zeka Destekli PDF Kural Arama &bull; Leonardo TEST (EN / TR)</span>
         </div>
       </div>
 
       <div class="header-actions">
-        <span id="offlineBadge" class="status-pill online" title="Çevrimdışı (Offline) Veritabanı Hazır">
+        <span id="aiStatusBadge" class="status-pill ai-pill" title="Gemini Yapay Zeka + 2026 RINA PDF Aktif">
+          <span>✨ AI + 2026 PDF Hazır</span>
+        </span>
+        <span id="offlineBadge" class="status-pill online" title="Çevrimdışı (Offline) Veritabanı Durumu">
           <span class="dot"></span>
-          <span id="offlineBadgeText">Offline Hazır</span>
+          <span id="offlineBadgeText">1.631 Sayfa Yüklü</span>
         </span>
         <button id="installPwaBtn" class="btn-header-action" type="button" title="iOS / Android Telefona Uygulama Olarak Yükle">
-          📲 Uygulamayı Kur
+          📲 Telefona Kur
         </button>
       </div>
     </div>
@@ -53,10 +55,10 @@
     <!-- MAIN NAVIGATION TABS -->
     <nav class="main-tabs" aria-label="Ana Menü">
       <button class="tab-btn active" data-tab="fat" type="button">
-        <span>📋 Ekipman &amp; Malzeme Testleri (Leonardo TEST)</span>
+        <span>✨ Yapay Zeka ile PDF'ten Kural &amp; Test Bul</span>
       </button>
       <button class="tab-btn" data-tab="rules" type="button">
-        <span>📖 RINA 2026 PDF Kuralları (Tam Metin)</span>
+        <span>📖 RINA 2026 PDF Kütüphanesi (129 Bölüm)</span>
       </button>
       <button class="tab-btn" data-tab="saved" type="button">
         <span>💾 Kayıtlı Saha Testlerim <span id="savedCountBadge" class="count-pill">0</span></span>
@@ -66,38 +68,80 @@
 
   <!-- MAIN CONTENT CONTAINER -->
   <main class="app-main">
-    <!-- TAB 1: EQUIPMENT & MATERIAL FAT (LEONARDO TEST VIEW) -->
+    <!-- TAB 1: AI PDF RULE FINDER & LEONARDO TEST WORKSPACE -->
     <section id="tab-fat" class="tab-panel active">
-      <!-- SEARCH & CONTROLS BAR (No Print) -->
-      <div class="search-controls-card no-print">
-        <div class="search-row">
-          <div class="search-input-wrap">
+      <!-- AI SEARCH HERO CARD (No Print) -->
+      <div class="ai-search-hero no-print">
+        <div class="ai-hero-top">
+          <div>
+            <div class="ai-badge-inline">✨ GEMINI AI + RINA RULES 2026 (1 JULY 2026 PDF)</div>
+            <h2 class="ai-hero-title">Fabrika Testi İçin Ekipman, Malzeme veya Kural Arayın</h2>
+            <p class="ai-hero-desc">
+              Aradığınız ekipmanı, malzemeyi veya test sorusunu <strong>Türkçe veya İngilizce</strong> yazın. Yapay zeka <strong>RINA Rules 2026 PDF'ini</strong> tarayarak ilgili kural maddelerini, test formüllerini ve <strong>Leonardo TEST (EN + TR)</strong> adımlarını doğrudan PDF'ten çıkarıp getirir.
+            </p>
+          </div>
+        </div>
+
+        <form id="aiSearchForm" class="ai-search-form" autocomplete="off">
+          <div class="ai-search-input-wrap">
             <span class="search-icon" aria-hidden="true">🔍</span>
             <input
               type="search"
-              id="equipmentSearchInput"
-              placeholder="Ekipman, malzeme veya kural ara... (Örn: Trafo, Transformer, Alternatör, Pano, UPS, Dizel, Kazan, Pompa, Valf, Şaft, Pervane, Sac AH36, Dövme, Çapa, Zincir, WPQR, Sec 5...)"
+              id="aiSearchInput"
+              placeholder="Örn: Hava tüpü hidrostatik test basıncı, Borda valfi testi, 440V Trafo HV testi, AH36 sac darbe testi, Dümen yelpazesi, Ambar kapağı..."
               autocomplete="off"
             />
             <button id="clearSearchBtn" class="clear-btn hidden" type="button" title="Temizle">&times;</button>
           </div>
-        </div>
+          <button id="aiSearchSubmitBtn" class="btn-ai-submit" type="submit">
+            <span>✨ PDF'ten Bul (AI)</span>
+          </button>
+        </form>
 
-        <!-- Category Chips -->
-        <div class="category-chips" id="categoryChips">
-          <button class="chip active" data-cat="all" type="button">Tümü (23)</button>
-          <button class="chip" data-cat="electrical" type="button">⚡ Elektrik (Ch 2)</button>
-          <button class="chip" data-cat="automation" type="button">🖥️ Otomasyon &amp; Siber (Ch 3)</button>
-          <button class="chip" data-cat="machinery" type="button">⚙️ Makine, Kazan, Boru &amp; Şaft (Ch 1)</button>
-          <button class="chip" data-cat="fire" type="button">🧯 Yangın (Ch 4)</button>
-          <button class="chip" data-cat="materials" type="button">🔩 Malzeme, Döküm, Çapa &amp; Kaynak (Pt D)</button>
-        </div>
+        <!-- QUICK AI SEARCH CHIPS & PRESET SELECTOR -->
+        <div class="ai-quick-bar">
+          <div class="quick-Prompt-group">
+            <span class="quick-label">Örnek Aramalar:</span>
+            <div class="quick-chips-scroll" id="aiQuickChips">
+              <button type="button" class="q-chip" data-query="Hava tüpü (starting air receiver) hidrostatik test basıncı ve fabrika testi">🫧 Hava Tüpü Hidrotest</button>
+              <button type="button" class="q-chip" data-query="Borda valfi (ship side valve) ve vanalar gövde & sit sızdırmazlık testi">🚰 Borda Valfi &amp; Vanalar</button>
+              <button type="button" class="q-chip" data-query="Santrifüj pompa (centrifugal pump) hidrostatik ve kapasite fabrika testi">⚙️ Pompa FAT Testi</button>
+              <button type="button" class="q-chip" data-query="Güç trafosu (power transformer) yüksek gerilim HV ve megger izolasyon testi">⚡ Trafo HV &amp; Megger</button>
+              <button type="button" class="q-chip" data-query="Alternatör ve elektrik motoru (rotating machines) fabrika kabul testi">🔌 Alternatör &amp; Motor</button>
+              <button type="button" class="q-chip" data-query="Ana dağıtım panosu (main switchboard) yüksek gerilim dielektrik testi">🎛️ Ana Pano (MSB)</button>
+              <button type="button" class="q-chip" data-query="AH36 DH36 EH36 gemi sacı çekme ve Charpy V-notch darbe testi">🔩 AH36/EH36 Sac Testi</button>
+              <button type="button" class="q-chip" data-query="Şaft ve krank mili çelik dövme (steel forgings) NDT ve mekanik testler">🔨 Şaft Dövme (Forging)</button>
+              <button type="button" class="q-chip" data-query="Dümen makinesi (steering gear) ve rudder stock fabrika kabul testi">☸️ Dümen (Steering Gear)</button>
+              <button type="button" class="q-chip" data-query="Su geçirmez kapı (watertight door) ve ambar kapağı (hatch cover) sızdırmazlık testi">🚪 Su Geçirmez Kapı &amp; Ambar</button>
+              <button type="button" class="q-chip" data-query="Bakır alaşımlı pervane dökümü (CU3 propeller casting) NDT ve mekanik test">🌀 Pervane Dökümü (CU3)</button>
+              <button type="button" class="q-chip" data-query="Çapa ve zincir (anchors and stud link chain cables) çekme ve kırma testi">⚓ Çapa &amp; Zincir</button>
+              <button type="button" class="q-chip" data-query="Kazan (boiler) ve ısı değiştirici (heat exchanger) hidrostatik test ve emniyet ventili">🔥 Kazan &amp; Eşanjör</button>
+              <button type="button" class="q-chip" data-query="Kaynak prosedürü onayı (WPQR) alın kaynağı tahribatlı ve NDT testleri">👨‍🏭 Kaynak WPQR</button>
+            </div>
+          </div>
 
-        <!-- Equipment Selector Cards Grid (Collapsible or Quick Switcher) -->
-        <div id="equipmentGrid" class="equipment-grid"></div>
+          <div class="preset-selector-wrap">
+            <label for="presetEquipmentSelect" class="quick-label">Hazır Leonardo TEST Şablonu (23 Ekipman):</label>
+            <select id="presetEquipmentSelect" class="preset-select"></select>
+          </div>
+        </div>
       </div>
 
-      <!-- DISPLAY SETTINGS & FIELD METADATA BAR (No Print) -->
+      <!-- AI SEARCH PROGRESS / STATUS BANNER (Shown while searching PDF + AI) -->
+      <div id="aiProgressBanner" class="ai-progress-banner hidden no-print">
+        <div class="spinner"></div>
+        <div class="ai-progress-text">
+          <div id="aiProgressTitle" class="ai-prog-title">RINA Rules 2026 PDF taranıyor...</div>
+          <div id="aiProgressSub" class="ai-prog-sub">İlgili kural maddeleri, tablolar ve test şartları çıkarılıyor...</div>
+        </div>
+      </div>
+
+      <!-- AI DIRECT RULE SUMMARY & KEY FORMULAS CARD (Shown when AI completes a search) -->
+      <div id="aiSummaryCard" class="ai-summary-card hidden">
+        <!-- Populated dynamically with AI direct rule answer, key formulas, and follow-up question box -->
+      </div>
+
+      <!-- DISPLAY SETTINGS & ACTIONS BAR (No Print) -->
       <div class="toolbar-card no-print">
         <div class="toolbar-group">
           <label class="toolbar-label">Dil Görünümü:</label>
@@ -111,32 +155,35 @@
         <div class="toolbar-group">
           <label class="toolbar-label">Test Kapsamı:</label>
           <div class="segmented-control" id="stepFilterControl">
-            <button type="button" class="seg-btn active" data-filter="dynamic">🎯 Sorulara Göre (Dinamik)</button>
-            <button type="button" class="seg-btn" data-filter="all">📑 Tüm Maddeleri Göster</button>
+            <button type="button" class="seg-btn active" data-filter="dynamic">🎯 Sorulara Göre</button>
+            <button type="button" class="seg-btn" data-filter="all">📑 Tüm Maddeler</button>
           </div>
         </div>
 
         <div class="toolbar-actions">
+          <button type="button" id="toggleMetaBarBtn" class="btn-secondary" title="Fabrika, Proje ve Seri No Bilgisi Ekle">
+            📝 Saha/Proje Bilgisi
+          </button>
           <button type="button" id="openRulePdfModalBtn" class="btn-secondary">
-            📖 Orijinal PDF Kural Metnini Aç
+            📖 PDF Kural Sayfasını Aç
           </button>
           <button type="button" id="saveInspectionBtn" class="btn-primary">
-            💾 Saha Testini Kaydet
+            💾 Kaydet
           </button>
           <button type="button" id="printSheetBtn" class="btn-accent">
-            🖨️ Leonardo TEST Raporu Yazdır / PDF
+            🖨️ PDF / Yazdır
           </button>
         </div>
       </div>
 
-      <!-- FACTORY / SURVEY METADATA INPUTS (Shown in print if filled) -->
-      <div class="survey-meta-bar no-print">
+      <!-- COLLAPSIBLE FACTORY / SURVEY METADATA INPUTS (No Print) -->
+      <div id="surveyMetaBar" class="survey-meta-bar hidden no-print">
         <div class="meta-field">
           <label for="metaFactory">Üretici / Fabrika Adı</label>
-          <input type="text" id="metaFactory" placeholder="Örn: ABB / Siemens / Astor / Tersane..." />
+          <input type="text" id="metaFactory" placeholder="Örn: ABB / Siemens / Tersane..." />
         </div>
         <div class="meta-field">
-          <label for="metaProject">Gemi / Proje / Sertifika No</label>
+          <label for="metaProject">Gemi / Proje / İş Emri No</label>
           <input type="text" id="metaProject" placeholder="Örn: NB1042 / RINA-2026-FAT..." />
         </div>
         <div class="meta-field">
@@ -144,8 +191,8 @@
           <input type="text" id="metaSerial" placeholder="Örn: SN-2026-0891..." />
         </div>
         <div class="meta-field">
-          <label for="metaTypeSerial">Tip Testli Prototip Seri No (Varsa)</label>
-          <input type="text" id="metaTypeSerial" placeholder="Rutin test ise prototip seri no..." />
+          <label for="metaTypeSerial">Tip Testli Prototip Seri No</label>
+          <input type="text" id="metaTypeSerial" placeholder="Varsa prototip seri no..." />
         </div>
         <div class="meta-field">
           <label for="metaSurveyor">Sörveyör Adı</label>
@@ -157,23 +204,28 @@
       <article id="leonardoSheet" class="leonardo-sheet">
         <!-- Rendered dynamically by app.js -->
       </article>
+
+      <!-- MATCHED VERBATIM RINA 2026 PDF PAGES PANEL (Shown directly below Leonardo sheet) -->
+      <div id="matchedPdfPagesPanel" class="matched-pdf-panel no-print">
+        <!-- Populated with the exact verbatim pages extracted from the 2026 RINA PDF -->
+      </div>
     </section>
 
-    <!-- TAB 2: FULL RINA 2026 RULES PDF DATABASE (PART C & PART D) -->
+    <!-- TAB 2: FULL RINA 2026 RULES PDF DATABASE (PART B, C, D, F — 129 SECTIONS / 1,631 PAGES) -->
     <section id="tab-rules" class="tab-panel">
       <div class="rules-explorer-card">
         <div class="rules-explorer-header">
           <div>
-            <h2>📖 RINA Rules 2026 — Orijinal PDF Kural Kütüphanesi (Part C &amp; Part D)</h2>
-            <p>91 MB'lık <strong>RINA Rules for the Classification of Ships (1 July 2026)</strong> kaynağından çıkarılan 87 Bölüm / 1.238 Sayfa tam metin kural veritabanı (Çevrimdışı aranabilir).</p>
+            <h2>📖 RINA Rules 2026 — Orijinal PDF Kural Kütüphanesi (129 Bölüm / 1.631 Sayfa)</h2>
+            <p><strong>RINA Rules for the Classification of Ships (1 July 2026)</strong> kaynağından çıkarılan Part B (Hull Outfitting &amp; Testing), Part C (Machinery, Electrical, Automation, Fire), Part D (Materials &amp; Welding) ve Part F tam metin veritabanı.</p>
           </div>
           <div class="rules-search-bar">
             <input
               type="search"
               id="fullRulesSearchInput"
-              placeholder="PDF kural metinlerinde İngilizce terim, tablo veya paragraf ara (Örn: '2 U + 1000', '5 M', '1,5 p', 'Table 2', 'Charpy', 'hydrostatic', 'overspeed')..."
+              placeholder="PDF içinde Türkçe veya İngilizce ara (Örn: 'hydrostatic', '1,5 p', '2 U + 1000', 'Charpy', 'rudder', 'watertight door', 'valf', 'hava tüpü')..."
             />
-            <button type="button" id="fullRulesSearchBtn" class="btn-primary">Ara</button>
+            <button type="button" id="fullRulesSearchBtn" class="btn-primary">PDF'te Ara</button>
           </div>
         </div>
 
@@ -181,10 +233,10 @@
 
         <div class="rules-layout">
           <aside class="rules-sidebar" id="rulesSidebar">
-            <!-- Populated with 87 sections of Part C and Part D -->
+            <!-- Populated with 129 sections -->
           </aside>
           <div class="rules-reader" id="rulesReader">
-            <!-- Populated with selected section pages and articles -->
+            <!-- Paginated fast reader for selected section -->
           </div>
         </div>
       </div>
@@ -196,7 +248,7 @@
         <div class="saved-header">
           <div>
             <h2>💾 Kayıtlı Fabrika Kabul Testlerim (Saha Kayıtları)</h2>
-            <p>Fabrikada işaretlediğiniz kontrol listeleri, ölçülen değerler ve saha notları cihazınızda çevrimdışı (offline) olarak saklanır.</p>
+            <p>Fabrikada işaretlediğiniz kontrol listeleri, yapay zeka aramaları, ölçülen değerler ve saha notları cihazınızda çevrimdışı (offline) olarak saklanır.</p>
           </div>
           <div class="saved-actions">
             <button type="button" id="exportSavedJsonBtn" class="btn-secondary">📤 Yedeği İndir (JSON)</button>
@@ -211,7 +263,7 @@
     </section>
   </main>
 
-  <!-- MODAL 1: ORIGINAL RINA 2026 PDF RULE VIEWER MODAL -->
+  <!-- MODAL 1: FAST PAGINATED ORIGINAL RINA 2026 PDF RULE VIEWER MODAL -->
   <div id="ruleModal" class="modal-backdrop hidden no-print" role="dialog" aria-modal="true" aria-labelledby="ruleModalTitle">
     <div class="modal-content modal-large">
       <div class="modal-header">
@@ -222,7 +274,12 @@
         <button type="button" id="closeRuleModalBtn" class="modal-close" aria-label="Kapat">&times;</button>
       </div>
       <div class="modal-toolbar">
-        <input type="search" id="modalRuleFilterInput" placeholder="Bu bölüm içinde kelime veya paragraf no ara (örn: 1.5.3, Table 1, 2.2)..." />
+        <div class="modal-page-controls">
+          <button type="button" id="modalPrevPageBtn" class="btn-xs">◀ Önceki Sayfa</button>
+          <select id="modalPageSelect" class="modal-page-select"></select>
+          <button type="button" id="modalNextPageBtn" class="btn-xs">Sonraki Sayfa ▶</button>
+        </div>
+        <input type="search" id="modalRuleFilterInput" placeholder="Bu bölümde kelime veya paragraf ara (örn: 7.3.2, Table 1, 1.5)..." />
         <div id="modalArticlePills" class="modal-article-pills"></div>
       </div>
       <div id="ruleModalBody" class="modal-body rule-pages-container"></div>
@@ -246,9 +303,9 @@
         <div class="install-box">
           <h4>🍎 iPhone / iPad (iOS Safari) Kurulumu:</h4>
           <ol>
-            <li>Safari tarayıcısında ekranın altındaki (veya üstündeki) <strong>Paylaş (Share)</strong> ikonuna <span class="key-badge">⬆️</span> dokunun.</li>
+            <li>Safari tarayıcısında ekranın altındaki <strong>Paylaş (Share)</strong> ikonuna <span class="key-badge">⬆️</span> dokunun.</li>
             <li>Menüyü aşağı kaydırıp <strong>"Ana Ekrana Ekle" (Add to Home Screen)</strong> seçeneğine dokunun.</li>
-            <li>Sağ üstten <strong>"Ekle" (Add)</strong> butonuna basın. Uygulama <strong>RINA FAT</strong> ikonuyla telefonunuza tam ekran uygulama olarak kurulacaktır ve internet olmayan fabrikalarda da çalışacaktır.</li>
+            <li>Sağ üstten <strong>"Ekle" (Add)</strong> butonuna basın. Uygulama telefonunuza tam ekran uygulama olarak kurulacaktır.</li>
           </ol>
         </div>
 
@@ -257,7 +314,6 @@
           <ol>
             <li>Tarayıcının sağ üst köşesindeki <strong>üç nokta (⋮)</strong> menüsüne dokunun.</li>
             <li><strong>"Uygulamayı yükle" (Install app)</strong> veya <strong>"Ana ekrana ekle"</strong> seçeneğine dokunun.</li>
-            <li>Onayladığınızda uygulama telefonunuza kurulur ve çevrimdışı (offline) çalışmaya hazır hale gelir.</li>
           </ol>
         </div>
       </div>
