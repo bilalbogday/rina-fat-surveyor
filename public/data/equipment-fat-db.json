@@ -1,5 +1,245 @@
 [
   {
+    "id": "sidescuttles-windows-skylights",
+    "code": "WIN",
+    "category": "materials",
+    "titleEn": "Sidescuttles, windows, skylights and deadlights",
+    "titleTr": "Lombozlar, Pencereler, Işıklıklar ve Kör Kapaklar",
+    "ruleRef": "Part. B - Ch. 9 - Sec. 9 - Par. 3 / Part. D - Ch. 4 - Sec. 1 - Par. 6",
+    "sectionId": "Pt D, Ch 4, Sec 1",
+    "pdfPage": 2521,
+    "keywords": [
+      "sidescuttles",
+      "windows",
+      "skylights",
+      "deadlights",
+      "lomboz",
+      "pencere",
+      "cam",
+      "glass",
+      "toughened",
+      "punch test",
+      "iso 614",
+      "iso 21005",
+      "iso 1751",
+      "iso 3903",
+      "ışıklık",
+      "kör kapak",
+      "Sec 9 Par 3",
+      "Sec 1 Par 6"
+    ],
+    "referenceTables": [
+      {
+        "titleEn": "Table 18: Hydrostatic test pressure for glass panes of sidescuttles and windows [Pt D, Ch 4, Sec 1, 6.3.2]",
+        "titleTr": "Tablo 18: Lomboz ve Pencere Camları Hidrostatik Test Basıncı (N/mm² = 10 bar)",
+        "headers": [
+          "Cam Kalınlığı (mm)",
+          "Ø200 mm",
+          "Ø250 mm",
+          "Ø300 mm",
+          "Ø350 mm",
+          "Ø400 mm",
+          "Ø450 mm"
+        ],
+        "rows": [
+          [
+            "6 mm",
+            "0.33 N/mm² (3.3 bar)",
+            "0.21 N/mm² (2.1 bar)",
+            "—",
+            "—",
+            "—",
+            "—"
+          ],
+          [
+            "8 mm",
+            "0.58 N/mm² (5.8 bar)",
+            "0.37 N/mm² (3.7 bar)",
+            "0.26 N/mm² (2.6 bar)",
+            "0.19 N/mm² (1.9 bar)",
+            "—",
+            "—"
+          ],
+          [
+            "10 mm",
+            "0.92 N/mm² (9.2 bar)",
+            "0.58 N/mm² (5.8 bar)",
+            "0.41 N/mm² (4.1 bar)",
+            "0.30 N/mm² (3.0 bar)",
+            "0.23 N/mm² (2.3 bar)",
+            "0.18 N/mm² (1.8 bar)"
+          ],
+          [
+            "12 mm",
+            "1.32 N/mm² (13.2 bar)",
+            "0.84 N/mm² (8.4 bar)",
+            "0.59 N/mm² (5.9 bar)",
+            "0.43 N/mm² (4.3 bar)",
+            "0.33 N/mm² (3.3 bar)",
+            "0.26 N/mm² (2.6 bar)"
+          ],
+          [
+            "15 mm",
+            "—",
+            "1.32 N/mm² (13.2 bar)",
+            "0.92 N/mm² (9.2 bar)",
+            "0.67 N/mm² (6.7 bar)",
+            "0.51 N/mm² (5.1 bar)",
+            "0.41 N/mm² (4.1 bar)"
+          ],
+          [
+            "19 mm",
+            "—",
+            "—",
+            "1.47 N/mm² (14.7 bar)",
+            "1.08 N/mm² (10.8 bar)",
+            "0.83 N/mm² (8.3 bar)",
+            "0.65 N/mm² (6.5 bar)"
+          ]
+        ]
+      },
+      {
+        "titleEn": "Table 19: ISO 614 Punch test load for toughened glass panes [Pt D, Ch 4, Sec 1, 6.3.2]",
+        "titleTr": "Tablo 19: Temperli Camlar İçin ISO 614 Zımba (Punch) Test Yükü (Newton)",
+        "headers": [
+          "Cam Kalınlığı (mm)",
+          "Destek Plakası Delik Çapı 200 mm",
+          "Destek Plakası Delik Çapı 150 mm"
+        ],
+        "rows": [
+          [
+            "6 mm",
+            "3400 N",
+            "3500 N"
+          ],
+          [
+            "8 mm",
+            "6500 N",
+            "6700 N"
+          ],
+          [
+            "10 mm",
+            "10200 N",
+            "11000 N"
+          ],
+          [
+            "12 mm",
+            "15500 N",
+            "16500 N"
+          ],
+          [
+            "15 mm",
+            "24000 N",
+            "25500 N"
+          ],
+          [
+            "19 mm",
+            "33400 N",
+            "36800 N"
+          ]
+        ]
+      }
+    ],
+    "applicationTerms": [
+      {
+        "id": "std_compliance",
+        "questionEn": "Is the equipment manufactured in accordance with a recognised national or international standard (e.g. ISO 1751, ISO 3903, ISO 21005)?",
+        "questionTr": "Ekipman tanınmış bir ulusal veya uluslararası standarda (ISO 1751, ISO 3903, ISO 21005 vb.) uygun olarak mı üretiliyor?",
+        "default": "Yes",
+        "options": [
+          {
+            "value": "Yes",
+            "labelEn": "Yes",
+            "labelTr": "Yes (Evet - Standart Uygunluklu)"
+          },
+          {
+            "value": "No",
+            "labelEn": "No",
+            "labelTr": "No (Hayır - Özel Onay Gerektirir)"
+          }
+        ]
+      }
+    ],
+    "acceptanceRequirements": [
+      {
+        "ruleRef": "Part. B Ch. 9 Sec. 9 Par. 3",
+        "sectionId": "Pt B, Ch 9, Sec 9",
+        "page": 1152,
+        "reqEn": "Sidescuttles, windows and skylights — General, opening arrangement, glasses and deadlight arrangement",
+        "reqTr": "Lombozlar, pencereler ve ışıklıklar — Genel kurallar, açılım düzeni, cam kalınlıkları ve kör kapak düzenlemesi"
+      },
+      {
+        "ruleRef": "Part. D Ch. 4 Sec. 1 Par. 6",
+        "sectionId": "Pt D, Ch 4, Sec 1",
+        "page": 2521,
+        "reqEn": "Side scuttles, windows and their glass panes — Manufacture, inspections, hydrostatic/punch tests and marking",
+        "reqTr": "Lombozlar, pencereler ve camları — İmalat, malzeme testleri, hidrostatik/zımba (punch) testleri ve markalama"
+      }
+    ],
+    "certificationActivities": [
+      {
+        "num": 1,
+        "ruleRef": "General",
+        "sectionId": "Pt D, Ch 4, Sec 1",
+        "page": 2521,
+        "condition": "always",
+        "titleEn": "The calibration status and adequacy of the test measurements devices used have been satisfactorily verified.",
+        "detailEn": "",
+        "titleTr": "Test ölçüm cihazlarının kalibrasyon durumu ve uygunluğu tatmin edici şekilde doğrulanmıştır.",
+        "detailTr": "Hidrostatik test manometresi, ISO 614 Punch test yük hücresi (load cell), IRHD kauçuk sertlik ölçümü (40-60 IRHD) ve boyut kontrol kumpaslarının geçerli kalibrasyon sertifikaları kontrol edilir.",
+        "tipTr": "Punch test düzeneğindeki kauçuk halkanın sertliği 40-60 IRHD, kalınlığı 2 mm ve keçe diskin (felt disc) kalınlığı 5 mm olmalıdır."
+      },
+      {
+        "num": 2,
+        "ruleRef": "(Part. B Ch. 1 Sec. 3 Par. 1) (Part. B Ch. 9 Sec. 9 Par. 3.1.5) (Part. D Ch. 4 Sec. 1 Par. 6.2)",
+        "sectionId": "Pt B, Ch 9, Sec 9",
+        "page": 1152,
+        "condition": "always",
+        "titleEn": "Drawings approval (Part. B Ch. 1 Sec. 3 Par. 1) (Part. B Ch. 9 Sec. 9 Par. 3.1.5) (Part. D Ch. 4 Sec. 1 Par. 6.2)",
+        "detailEn": "- Drawing approval is not required if the equipment is in accordance with a recognised national or international standard.",
+        "titleTr": "Resim Onayı (Part. B Ch. 1 Sec. 3 Par. 1) (Part. B Ch. 9 Sec. 9 Par. 3.1.5) (Part. D Ch. 4 Sec. 1 Par. 6.2)",
+        "detailTr": "- Ekipman tanınmış bir ulusal veya uluslararası standarda (ISO 1751 lombozlar, ISO 3903 pencereler, ISO 21005 camlar) uygun ise resim onayı aranmaz. Standart dışı özel tasarımlarda RINA onaylı teknik resim aranır.",
+        "tipTr": "Camların mutlaka ISO 21005 standardına uygun temperli emniyet camı (toughened safety glass) olduğunu üretici sertifikasından doğrulayın."
+      },
+      {
+        "num": 3,
+        "ruleRef": "(Part. D Ch. 4 Sec. 1 Par. 6.2.2) (Part. D Ch. 4 Sec. 1 Par. 6.3.1)",
+        "sectionId": "Pt D, Ch 4, Sec 1",
+        "page": 2522,
+        "condition": "always",
+        "titleEn": "Testing of materials (Part. D Ch. 4 Sec. 1 Par. 6.2.2) (Part. D Ch. 4 Sec. 1 Par. 6.3.1)",
+        "detailEn": "- Frame/deadlight castings bend test (1 piece per batch of 50 on mandrel D = 2×t: steel castings ≥ 20°, brass frames ≥ 10° / dead covers ≥ 15°, light alloy frames ≥ 6° / dead covers ≥ 15°).\n- Glass panes [6.3.2]: Either (a) Hydrostatic test on 1 pane per batch of 100 at Table 18 pressure for ≥ 1 min without breaking, OR (b) ISO 614 Punch test on 4 panes per batch of 100 (or every pane if batch ≤ 4) at Table 19 load (applied at 1000 N/s, held for ≥ 5 s without fracture).",
+        "titleTr": "Malzeme ve Cam Testleri (Part. D Ch. 4 Sec. 1 Par. 6.2.2, Par. 6.3.1 & Par. 6.3.2)",
+        "detailTr": "1) Çerçeve ve Kör Kapak Malzeme Testi [6.3.1]: Aynı dökümden her 50 parçada 1 adet üzerinde (veya numunede) çekme ve eğme testi yapılır (Mandrel çapı = 2×kalınlık; çatlamadan ulaşılması gereken eğme açısı: çelik döküm ≥ 20°, pirinç çerçeve ≥ 10° / kör kapak ≥ 15°, hafif alaşım çerçeve ≥ 6° / kör kapak ≥ 15°).\n2) Temperli Cam Testi [6.3.2]: Her 100 adetlik homojen partiden: (a) Tablo 18 basıncında en az 1 dakika hidrostatik test (1 cam/100) VEYA (b) ISO 614 Zımba (Punch) testi (4 cam/100; parti ≤ 4 ise her camda) uygulanır. Yük 1000 N/saniye hızla Tablo 19 değerine çıkarılır ve en az 5 saniye tutulur; kırılma olmamalıdır.",
+        "tipTr": "Mat (kumlanmış/asitli) camlarda punch testi yüzey işleminden SONRA yapılmalı ve yük işlem görmemiş yüzeye uygulanmalıdır."
+      },
+      {
+        "num": 4,
+        "ruleRef": "(Part. D Ch. 4 Sec. 1 Par. 6.3.3)",
+        "sectionId": "Pt D, Ch 4, Sec 1",
+        "page": 2525,
+        "condition": "always",
+        "titleEn": "Visual, dimensional examination and NDT (Part. D Ch. 4 Sec. 1 Par. 6.3.3)",
+        "detailEn": "- Dimensional and conformity checks are to be performed by the manufacturer with checks at the discretion of the RINA Surveyor.",
+        "titleTr": "Görsel, Boyutsal Muayene ve NDT (Part. D Ch. 4 Sec. 1 Par. 6.3.3)",
+        "detailTr": "- Boyutsal ve uygunluk kontrolleri üretici tarafından gerçekleştirilir; RINA Sörveyörü takdirine bağlı olarak cam kalınlığı (tolerans 0 / +2 mm), çerçeve et kalınlığı, conta oturumu ve döküm/kaynak yüzey kalitesini kontrol eder.",
+        "tipTr": "Cam kenarlarının kauçuk conta iç kenarından en az 25 mm içeride desteklendiğini ve cam kalınlık toleransının (0 / +2 mm) sağlandığını kontrol edin."
+      },
+      {
+        "num": 5,
+        "ruleRef": "(Part. B Ch. 9 Sec. 9 Par. 3.1.5)",
+        "sectionId": "Pt B, Ch 9, Sec 9",
+        "page": 1152,
+        "condition": "always",
+        "titleEn": "Final inspection (Part. B Ch. 9 Sec. 9 Par. 3.1.5)",
+        "detailEn": "- As required by the applicable recognised national or international standard.\n- Identification and marking of glass panes (Part. D Ch. 4 Sec. 1 Par. 6.4.1): Manufacturer trademark, RINA brand, and nominal thickness (mm) inside single-line triangle (transparent) or double-line triangle (matt).",
+        "titleTr": "Son Muayene ve Markalama (Part. B Ch. 9 Sec. 9 Par. 3.1.5 & Part. D Ch. 4 Sec. 1 Par. 6.4)",
+        "detailTr": "- İlgili ulusal/uluslararası standardın gerektirdiği son muayene ve sızdırmazlık kontrolleri yapılır. Testi geçen tüm camlarda montajdan sonra da net görünecek konumda: Üretici adı/logosu, RINA damgası ve ISO 614 üçgeni (şeffaf camda tek çizgili üçgen, mat camda çift çizgili üçgen) içinde mm cinsinden nominal cam kalınlığı markalanmış olmalıdır.",
+        "tipTr": "Cam üzerindeki RINA sembolü ve üçgen içindeki kalınlık yazısının montaj sonrasında çerçeve altında kalmayacak bir köşede olduğundan emin olun."
+      }
+    ]
+  },
+  {
     "id": "transformers-essential",
     "code": "EL-01",
     "category": "electrical",

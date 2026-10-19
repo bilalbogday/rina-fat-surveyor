@@ -1,4 +1,4 @@
-const CACHE_NAME = 'rina-fat-surveyor-v2';
+const CACHE_NAME = 'rina-fat-surveyor-v3';
 const CORE_ASSETS = [
   '/',
   '/index.html',
