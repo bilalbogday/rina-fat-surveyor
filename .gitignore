@@ -1,0 +1,16 @@
+# OS & Editor files
+.DS_Store
+Thumbs.db
+
+# Firebase cache
+.firebase/
+firebase-debug.log*
+
+# Exclude 91 MB source PDF from Git (extracted JSON data is in public/data/)
+*.pdf
+
+# Python caches
+__pycache__/
+*.pyc
+.venv/
+venv/

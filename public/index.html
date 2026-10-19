@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#003b73" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="RINA FAT" />
+  <meta name="description" content="RINA Marine Surveyor Fabrika Kabul Testleri (FAT) — Leonardo TEST & RINA Rules 2026 (Part C & D) İngilizce/Türkçe Çevrimdışı Rehber" />
+  <title>RINA Surveyor — Leonardo TEST &amp; 2026 Rules FAT Rehberi</title>
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <!-- TOP APP BAR (Hidden on Print) -->
+  <header class="app-header no-print">
+    <div class="header-inner">
+      <div class="brand-group" id="brandHomeBtn" role="button" tabindex="0" title="Ana Ekrana Dön">
+        <div class="rina-logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 120 52" width="88" height="38">
+            <text x="2" y="37" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="34" fill="#ffffff">R</text>
+            <text x="29" y="37" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="34" fill="#ffffff">I</text>
+            <!-- Compass Star -->
+            <polygon points="56,2 62,21 56,18 50,21" fill="#38bdf8"/>
+            <polygon points="56,48 62,29 56,32 50,29" fill="#38bdf8"/>
+            <polygon points="39,25 51,21 48,25 51,29" fill="#7dd3fc"/>
+            <polygon points="73,25 61,21 64,25 61,29" fill="#7dd3fc"/>
+            <polygon points="44,12 52,21 49,23" fill="#bae6fd"/>
+            <polygon points="68,38 60,29 63,27" fill="#bae6fd"/>
+            <text x="74" y="37" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="34" fill="#ffffff">A</text>
+          </svg>
+        </div>
+        <div class="brand-titles">
+          <h1>MARINE SURVEYOR FAT</h1>
+          <span class="subtitle">Leonardo TEST &bull; RINA Rules 2026 (EN / TR)</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <span id="offlineBadge" class="status-pill online" title="Çevrimdışı (Offline) Veritabanı Hazır">
+          <span class="dot"></span>
+          <span id="offlineBadgeText">Offline Hazır</span>
+        </span>
+        <button id="installPwaBtn" class="btn-header-action" type="button" title="iOS / Android Telefona Uygulama Olarak Yükle">
+          📲 Uygulamayı Kur
+        </button>
+      </div>
+    </div>
+
+    <!-- MAIN NAVIGATION TABS -->
+    <nav class="main-tabs" aria-label="Ana Menü">
+      <button class="tab-btn active" data-tab="fat" type="button">
+        <span>📋 Ekipman &amp; Malzeme Testleri (Leonardo TEST)</span>
+      </button>
+      <button class="tab-btn" data-tab="rules" type="button">
+        <span>📖 RINA 2026 PDF Kuralları (Tam Metin)</span>
+      </button>
+      <button class="tab-btn" data-tab="saved" type="button">
+        <span>💾 Kayıtlı Saha Testlerim <span id="savedCountBadge" class="count-pill">0</span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="app-main">
+    <!-- TAB 1: EQUIPMENT & MATERIAL FAT (LEONARDO TEST VIEW) -->
+    <section id="tab-fat" class="tab-panel active">
+      <!-- SEARCH & CONTROLS BAR (No Print) -->
+      <div class="search-controls-card no-print">
+        <div class="search-row">
+          <div class="search-input-wrap">
+            <span class="search-icon" aria-hidden="true">🔍</span>
+            <input
+              type="search"
+              id="equipmentSearchInput"
+              placeholder="Ekipman, malzeme veya kural ara... (Örn: Trafo, Transformer, Alternatör, Pano, UPS, Dizel, Kazan, Pompa, Valf, Şaft, Pervane, Sac AH36, Dövme, Çapa, Zincir, WPQR, Sec 5...)"
+              autocomplete="off"
+            />
+            <button id="clearSearchBtn" class="clear-btn hidden" type="button" title="Temizle">&times;</button>
+          </div>
+        </div>
+
+        <!-- Category Chips -->
+        <div class="category-chips" id="categoryChips">
+          <button class="chip active" data-cat="all" type="button">Tümü (23)</button>
+          <button class="chip" data-cat="electrical" type="button">⚡ Elektrik (Ch 2)</button>
+          <button class="chip" data-cat="automation" type="button">🖥️ Otomasyon &amp; Siber (Ch 3)</button>
+          <button class="chip" data-cat="machinery" type="button">⚙️ Makine, Kazan, Boru &amp; Şaft (Ch 1)</button>
+          <button class="chip" data-cat="fire" type="button">🧯 Yangın (Ch 4)</button>
+          <button class="chip" data-cat="materials" type="button">🔩 Malzeme, Döküm, Çapa &amp; Kaynak (Pt D)</button>
+        </div>
+
+        <!-- Equipment Selector Cards Grid (Collapsible or Quick Switcher) -->
+        <div id="equipmentGrid" class="equipment-grid"></div>
+      </div>
+
+      <!-- DISPLAY SETTINGS & FIELD METADATA BAR (No Print) -->
+      <div class="toolbar-card no-print">
+        <div class="toolbar-group">
+          <label class="toolbar-label">Dil Görünümü:</label>
+          <div class="segmented-control" id="langModeControl">
+            <button type="button" class="seg-btn active" data-lang="both">🇬🇧 EN + 🇹🇷 TR Birlikte</button>
+            <button type="button" class="seg-btn" data-lang="en">🇬🇧 Sadece EN</button>
+            <button type="button" class="seg-btn" data-lang="tr">🇹🇷 Sadece TR</button>
+          </div>
+        </div>
+
+        <div class="toolbar-group">
+          <label class="toolbar-label">Test Kapsamı:</label>
+          <div class="segmented-control" id="stepFilterControl">
+            <button type="button" class="seg-btn active" data-filter="dynamic">🎯 Sorulara Göre (Dinamik)</button>
+            <button type="button" class="seg-btn" data-filter="all">📑 Tüm Maddeleri Göster</button>
+          </div>
+        </div>
+
+        <div class="toolbar-actions">
+          <button type="button" id="openRulePdfModalBtn" class="btn-secondary">
+            📖 Orijinal PDF Kural Metnini Aç
+          </button>
+          <button type="button" id="saveInspectionBtn" class="btn-primary">
+            💾 Saha Testini Kaydet
+          </button>
+          <button type="button" id="printSheetBtn" class="btn-accent">
+            🖨️ Leonardo TEST Raporu Yazdır / PDF
+          </button>
+        </div>
+      </div>
+
+      <!-- FACTORY / SURVEY METADATA INPUTS (Shown in print if filled) -->
+      <div class="survey-meta-bar no-print">
+        <div class="meta-field">
+          <label for="metaFactory">Üretici / Fabrika Adı</label>
+          <input type="text" id="metaFactory" placeholder="Örn: ABB / Siemens / Astor / Tersane..." />
+        </div>
+        <div class="meta-field">
+          <label for="metaProject">Gemi / Proje / Sertifika No</label>
+          <input type="text" id="metaProject" placeholder="Örn: NB1042 / RINA-2026-FAT..." />
+        </div>
+        <div class="meta-field">
+          <label for="metaSerial">Ekipman Seri / Döküm No</label>
+          <input type="text" id="metaSerial" placeholder="Örn: SN-2026-0891..." />
+        </div>
+        <div class="meta-field">
+          <label for="metaTypeSerial">Tip Testli Prototip Seri No (Varsa)</label>
+          <input type="text" id="metaTypeSerial" placeholder="Rutin test ise prototip seri no..." />
+        </div>
+        <div class="meta-field">
+          <label for="metaSurveyor">Sörveyör Adı</label>
+          <input type="text" id="metaSurveyor" placeholder="Örn: Bilal Boğday — RINA Surveyor" />
+        </div>
+      </div>
+
+      <!-- OFFICIAL LEONARDO TEST SHEET CONTAINER -->
+      <article id="leonardoSheet" class="leonardo-sheet">
+        <!-- Rendered dynamically by app.js -->
+      </article>
+    </section>
+
+    <!-- TAB 2: FULL RINA 2026 RULES PDF DATABASE (PART C & PART D) -->
+    <section id="tab-rules" class="tab-panel">
+      <div class="rules-explorer-card">
+        <div class="rules-explorer-header">
+          <div>
+            <h2>📖 RINA Rules 2026 — Orijinal PDF Kural Kütüphanesi (Part C &amp; Part D)</h2>
+            <p>91 MB'lık <strong>RINA Rules for the Classification of Ships (1 July 2026)</strong> kaynağından çıkarılan 87 Bölüm / 1.238 Sayfa tam metin kural veritabanı (Çevrimdışı aranabilir).</p>
+          </div>
+          <div class="rules-search-bar">
+            <input
+              type="search"
+              id="fullRulesSearchInput"
+              placeholder="PDF kural metinlerinde İngilizce terim, tablo veya paragraf ara (Örn: '2 U + 1000', '5 M', '1,5 p', 'Table 2', 'Charpy', 'hydrostatic', 'overspeed')..."
+            />
+            <button type="button" id="fullRulesSearchBtn" class="btn-primary">Ara</button>
+          </div>
+        </div>
+
+        <div id="fullRulesSearchResults" class="rules-search-results hidden"></div>
+
+        <div class="rules-layout">
+          <aside class="rules-sidebar" id="rulesSidebar">
+            <!-- Populated with 87 sections of Part C and Part D -->
+          </aside>
+          <div class="rules-reader" id="rulesReader">
+            <!-- Populated with selected section pages and articles -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: SAVED FACTORY INSPECTIONS -->
+    <section id="tab-saved" class="tab-panel">
+      <div class="saved-inspections-card">
+        <div class="saved-header">
+          <div>
+            <h2>💾 Kayıtlı Fabrika Kabul Testlerim (Saha Kayıtları)</h2>
+            <p>Fabrikada işaretlediğiniz kontrol listeleri, ölçülen değerler ve saha notları cihazınızda çevrimdışı (offline) olarak saklanır.</p>
+          </div>
+          <div class="saved-actions">
+            <button type="button" id="exportSavedJsonBtn" class="btn-secondary">📤 Yedeği İndir (JSON)</button>
+            <label class="btn-secondary file-label">
+              📥 Yedek Yükle
+              <input type="file" id="importSavedJsonInput" accept=".json" class="hidden" />
+            </label>
+          </div>
+        </div>
+        <div id="savedInspectionsList" class="saved-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL 1: ORIGINAL RINA 2026 PDF RULE VIEWER MODAL -->
+  <div id="ruleModal" class="modal-backdrop hidden no-print" role="dialog" aria-modal="true" aria-labelledby="ruleModalTitle">
+    <div class="modal-content modal-large">
+      <div class="modal-header">
+        <div>
+          <span id="ruleModalBadge" class="rule-badge">Pt C, Ch 2, Sec 5</span>
+          <h3 id="ruleModalTitle">RINA Rules 2026 — Original Rule Text</h3>
+        </div>
+        <button type="button" id="closeRuleModalBtn" class="modal-close" aria-label="Kapat">&times;</button>
+      </div>
+      <div class="modal-toolbar">
+        <input type="search" id="modalRuleFilterInput" placeholder="Bu bölüm içinde kelime veya paragraf no ara (örn: 1.5.3, Table 1, 2.2)..." />
+        <div id="modalArticlePills" class="modal-article-pills"></div>
+      </div>
+      <div id="ruleModalBody" class="modal-body rule-pages-container"></div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: PWA INSTALL INSTRUCTIONS (iOS & ANDROID) -->
+  <div id="installModal" class="modal-backdrop hidden no-print" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>📲 Mobil Uygulama Olarak Kurulum (iOS &amp; Android PWA)</h3>
+        <button type="button" id="closeInstallModalBtn" class="modal-close" aria-label="Kapat">&times;</button>
+      </div>
+      <div class="modal-body install-guide-body">
+        <div id="nativeInstallPromptBox" class="install-box highlight hidden">
+          <h4>🚀 Tek Tıkla Kurulum Hazır</h4>
+          <p>Cihazınız doğrudan uygulama kurulumunu destekliyor:</p>
+          <button type="button" id="triggerNativeInstallBtn" class="btn-primary">Şimdi Ana Ekrana Yükle</button>
+        </div>
+
+        <div class="install-box">
+          <h4>🍎 iPhone / iPad (iOS Safari) Kurulumu:</h4>
+          <ol>
+            <li>Safari tarayıcısında ekranın altındaki (veya üstündeki) <strong>Paylaş (Share)</strong> ikonuna <span class="key-badge">⬆️</span> dokunun.</li>
+            <li>Menüyü aşağı kaydırıp <strong>"Ana Ekrana Ekle" (Add to Home Screen)</strong> seçeneğine dokunun.</li>
+            <li>Sağ üstten <strong>"Ekle" (Add)</strong> butonuna basın. Uygulama <strong>RINA FAT</strong> ikonuyla telefonunuza tam ekran uygulama olarak kurulacaktır ve internet olmayan fabrikalarda da çalışacaktır.</li>
+          </ol>
+        </div>
+
+        <div class="install-box">
+          <h4>🤖 Android (Chrome / Edge / Samsung Internet) Kurulumu:</h4>
+          <ol>
+            <li>Tarayıcının sağ üst köşesindeki <strong>üç nokta (⋮)</strong> menüsüne dokunun.</li>
+            <li><strong>"Uygulamayı yükle" (Install app)</strong> veya <strong>"Ana ekrana ekle"</strong> seçeneğine dokunun.</li>
+            <li>Onayladığınızda uygulama telefonunuza kurulur ve çevrimdışı (offline) çalışmaya hazır hale gelir.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toastContainer" class="toast-container no-print"></div>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
